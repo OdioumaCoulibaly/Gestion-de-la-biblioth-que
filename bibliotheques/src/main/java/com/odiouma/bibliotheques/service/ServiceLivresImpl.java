@@ -28,12 +28,12 @@ public class ServiceLivresImpl implements ServiceLivres{
     public Livres modifier(Long id, Livres livre) {
         return repositoryLivres.findById(id)
                 .map(l-> {
+                    l.setIsbn(livre.getIsbn());
                     l.setTitre(livre.getTitre());
                     l.setDate(livre.getDate());
                     l.setDescription(livre.getDescription());
                     l.setId_Auteur(livre.getId_Auteur());
                     l.setId_Categorie(livre.getId_Categorie());
-                    l.setIsbn(livre.getIsbn());
                     return repositoryLivres.save(l);
                 }).orElseThrow(() -> new RuntimeException("Livre non trouvé !"));
     }
@@ -43,5 +43,4 @@ public class ServiceLivresImpl implements ServiceLivres{
         repositoryLivres.deleteById(id);
         return "Livre supprimer !";
     }
-
 }

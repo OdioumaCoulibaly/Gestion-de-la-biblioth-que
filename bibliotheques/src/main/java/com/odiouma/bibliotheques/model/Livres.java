@@ -15,8 +15,11 @@ public class Livres {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+
+    //isbn
+    @Column(length = 35, nullable = false, unique = true)
     private String isbn;
+
     @Column(length = 35)
     private String titre;
     @Column(length = 35)
@@ -24,12 +27,10 @@ public class Livres {
 
     @Column(nullable = false)
     private Long id_Auteur;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = false)
     private Long id_Categorie;
     @Column(length =12)
     private String date;
-
-
 
 }
 
